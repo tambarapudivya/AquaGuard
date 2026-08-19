@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>AquaGuard - Admin Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef8ff;
+        }
+
+        header {
+            background: #0077b6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        h2 {
+            color: #0077b6;
+        }
+
+        .table-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #0077b6;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:hover {
+            background: #f1f9ff;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 25px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>💧 AquaGuard Admin Dashboard</h1>
+    <p>Water Leakage Reports</p>
+</header>
+
+<div class="container">
+
+    <h2>📋 Submitted Reports</h2>
+
+    <div class="table-container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for report in reports %}
+
+                <tr>
+                    <td>{{ report['id'] }}</td>
+                    <td>{{ report['name'] }}</td>
+                    <td>{{ report['location'] }}</td>
+                    <td>{{ report['description'] }}</td>
+                    <td>{{ report['status'] }}</td>
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="5" class="empty">
+                        No reports submitted yet.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
